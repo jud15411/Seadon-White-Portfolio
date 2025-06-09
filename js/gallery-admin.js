@@ -334,6 +334,9 @@ async function updateGalleryItem() {
     }
 }
 
+// Add a flag to track submission state
+let isSubmitting = false;
+
 // Add gallery item
 async function addGalleryItem() {
     if (!ensureFirebaseInitialized()) {
@@ -341,8 +344,23 @@ async function addGalleryItem() {
         return;
     }
     
+    // Prevent double submission
+    if (isSubmitting) {
+        console.log('Already submitting, ignoring duplicate submission');
+        return;
+    }
+    
     try {
+        isSubmitting = true;
         console.log('Adding new gallery item...');
+        
+        // Disable the submit button
+        const submitButton = document.querySelector('#addGalleryItemForm button[type="submit"]');
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Adding...';
+        }
+        
         const title = document.getElementById('galleryTitle').value;
         const category = document.getElementById('galleryCategory').value;
         const description = document.getElementById('galleryDescription').value;
@@ -397,6 +415,14 @@ async function addGalleryItem() {
     } catch (error) {
         console.error('Error adding gallery item:', error);
         window.galleryAdmin.showAlert('Error adding gallery item: ' + error.message, 'danger');
+    } finally {
+        // Reset submission state and re-enable button
+        isSubmitting = false;
+        const submitButton = document.querySelector('#addGalleryItemForm button[type="submit"]');
+        if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-plus me-2"></i>Add Item';
+        }
     }
 }
 
