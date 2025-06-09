@@ -67,3 +67,25 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Firebase service account key
+serviceAccountKey.json
+
+# Environment variables
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+out/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
