@@ -1,0 +1,31 @@
+.footer {
+    background-color: var(--background-color);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footer-bottom p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.developer-credit {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.developer-credit a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
+    color: var(--accent-color-hover);
+} 

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seadon White - Contemporary Artist</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="nav-brand">
+                <img src="../images/logo-update.png" alt="Seadon White" class="nav-logo">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">
+                    <span class="link-number">01</span>
+                    <span class="link-text">Home</span>
+                </a>
+                <a href="gallery.html" class="nav-link">
+                    <span class="link-number">02</span>
+                    <span class="link-text">Gallery</span>
+                </a>
+                <a href="shop.html" class="nav-link">
+                    <span class="link-number">03</span>
+                    <span class="link-text">Shop</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <span class="link-number">04</span>
+                    <span class="link-text">About</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <span class="link-number">05</span>
+                    <span class="link-text">Contact</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="../images/FullSizeRender.jpg" alt="Featured Artwork">
+                </div>
+                <div class="slide">
+                    <img src="../images/image1.jpeg" alt="Artwork 1">
+                </div>
+                <div class="slide">
+                    <img src="../images/image2.jpeg" alt="Artwork 2">
+                </div>
+                <div class="slide">
+                    <img src="../images/image3.jpeg" alt="Artwork 3">
+                </div>
+                <div class="slide">
+                    <img src="../images/image4.jpeg" alt="Artwork 4">
+                </div>
+                <div class="slide">
+                    <img src="../images/image5.jpeg" alt="Artwork 5">
+                </div>
+                <div class="slide">
+                    <img src="../images/image6.jpeg" alt="Artwork 6">
+                </div>
+            </div>
+            <div class="hero-content">
+                <h1>Seadon White</h1>
+                <p class="hero-subtitle">Contemporary Artist & Sculptor</p>
+                <div class="hero-cta">
+                    <a href="gallery.html" class="cta-button">View Gallery</a>
+                    <a href="shop.html" class="cta-button secondary">Shop Artwork</a>
+                </div>
+            </div>
+            <div class="slideshow-controls">
+                <button class="prev-slide" aria-label="Previous slide">❮</button>
+                <div class="slide-dots">
+                    <button class="dot active" aria-label="Go to slide 1"></button>
+                    <button class="dot" aria-label="Go to slide 2"></button>
+                    <button class="dot" aria-label="Go to slide 3"></button>
+                    <button class="dot" aria-label="Go to slide 4"></button>
+                    <button class="dot" aria-label="Go to slide 5"></button>
+                    <button class="dot" aria-label="Go to slide 6"></button>
+                    <button class="dot" aria-label="Go to slide 7"></button>
+                </div>
+                <button class="next-slide" aria-label="Next slide">❯</button>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="featured-content">
+                <h2>Featured Works</h2>
+                <div id="featured-grid" class="featured-grid">
+                    <!-- Featured artworks will be dynamically inserted here -->
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading featured artworks...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-preview">
+            <div class="contact-preview-content">
+                <h2>Get in Touch</h2>
+                <p>Interested in commissioning a piece or learning more about my work?</p>
+                <a href="contact.html" class="cta-button">Contact Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Seadon White. All rights reserved.</p>
+            <p class="developer-credit">Developed by <a href="https://webflaredesignco.com" target="_blank" rel="noopener noreferrer">Webflare Design Co</a></p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <script>
+        // Simple test to check if Firebase is loaded
+        window.addEventListener('load', function() {
+            console.log('Window loaded, checking Firebase...');
+            if (typeof firebase === 'undefined') {
+                console.error('Firebase is not loaded!');
+            } else {
+                console.log('Firebase is loaded:', firebase.SDK_VERSION);
+            }
+        });
+    </script>
+    
+    <script src="../js/home.js" type="module"></script>
+    <script src="../js/main.js" defer></script>
+</body>
+</html>
