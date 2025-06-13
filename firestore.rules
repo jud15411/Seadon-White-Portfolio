@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && 
+        (request.auth.token.email == 'contact@seadonwhite.com' ||
+         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true));
+    }
+    
+    // Gallery collection rules - public read, admin write
+    match /Gallery/{galleryId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // Slideshow collection rules - public read, admin write
+    match /Slideshow/{slideId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // Users collection rules
+    match /users/{userId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null && 
+                   (request.auth.uid == userId || isAdmin());
+    }
+    
+    // Artworks collection rules - public read, admin write
+    match /artworks/{artworkId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    
+    // Orders collection rules
+    match /orders/{orderId} {
+      allow read: if request.auth != null && 
+                 (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if request.auth != null && 
+                   request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAdmin();
+    }
+    
+    // Default deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
